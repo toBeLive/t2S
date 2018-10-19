@@ -1,2 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('src/css/reset.css');
+@import url('node_modules/bootstrap/dist/css/bootstrap.min.css');
 
+:root {
+    --big-size: 900px;
+    --bg-color-menu: #4682B4;
+    --bg-color: #DCDCDC;
+}
+
+body {
+    min-width: var(--big-size);
+    background-color: var(--bg-color);
+}
+
+#top__head {
+    background-color: var(--bg-color-menu);
+}
+
+#logo > img {
+    position: absolute;
+    max-height: 80px;
+    max-width: 290px;
+    padding: 10px 0 0 15px;
+    /*padding: 15px 0 0 15px; для оригинального лабла*/
+}
+
+#top__head {
+    display: flex;
+    justify-content: space-between;
+    min-height: 80px;
+}
+
+#language {
+    display: flex;
+    /*width: 130px;*/
+    justify-content: space-between;
+    align-items: center;
+}
+
+#flag {
+    background-image: url("http://t2studio.org/wp-content/uploads/2018/09/europa-vector-flag_small.png");
+    width: 30px;
+    height: 31px;
+    background-position: -165px -164px;
+    margin-right: 5px;
+}

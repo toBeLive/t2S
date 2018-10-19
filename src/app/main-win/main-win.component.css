@@ -1,5 +1,4 @@
 /*отрисовка основных блоков сайта*/
-
 .sections {
     /*border: 1px solid gray;*/
     margin: 5px;
@@ -31,17 +30,11 @@ p {
 
 
 /*для визуализации*/
-
-
-/*
-.d-flex * {
+.test-div * {
     border: 1px dashed #87CEEB;
 }
-*/
-
 
 /*стилизация формы*/
-
 .d-form {
     min-width: 250px;
     flex-direction: column;
@@ -49,7 +42,6 @@ p {
 
 
 /*стилизация слайдшоу*/
-
 #slides {
     position: relative;
     height: 250px;
@@ -95,7 +87,6 @@ p {
 
 
 /*блок новостей*/
-
 #news>li {
     width: 33%;
 }

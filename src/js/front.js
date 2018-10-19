@@ -16,23 +16,23 @@ window.onload = function() {
                 langFlag.style.backgroundPosition = "-104px -73px";
         }
     }
-/*
+
     langSelect.addEventListener("change", function() {
         changeFlagLanguage(langSelect.value);
     });
-*/
+
     /*select the main menu tab*/
-    /*
+
     var headerMenu = document.getElementById("header__menu"),
         currentTab = headerMenu.querySelectorAll("a");
-        */
-    /*
+
+
         headerMenu.addEventListener("click", function() {
             //changeCurrentTab(currentTab);
             console.log("1");
         });
-        */
-    /*
+
+
     function changeCurrentTab() {
         for (i = 0; i < currentTab.length; i++) {
             if (currentTab[i].classList == "selected") {
@@ -56,7 +56,7 @@ window.onload = function() {
             target = target.parentNode;
         }
     });
-*/
+
     function selectedTab(node) {
         changeCurrentTab();
         node.classList.add('selected');

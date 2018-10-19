@@ -1,19 +1,37 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService} from '../user.service';
+import { Component } from '@angular/core';
+import { UsersService } from '../user.service';
+
+interface Users {
+  name: string;
+  id: number;
+}
 
 @Component({
   selector: 'app-person',
   templateUrl: './person.component.html',
   styleUrls: ['./person.component.css']
 })
-export class PersonComponent implements OnInit {
+export class PersonComponent {
 
-  user = [];
+  users: Users[] = [];
+  userLogin: string = '';
+  configUrl = 'http://localhost:3000/users';
 
-  constructor(private userService: UserService) { }
+  constructor(private usersService: UsersService) { }
 
-  ngOnInit() {
-    this.user = this.userService.user;
-  }
+    public loadUsers() {
+        this.usersService.getUsers(this.configUrl)
+            .subscribe((users: Users[]) => {
+              this.users = users;
+            });
+    }
+
+    addUser() {
+      this.usersService.addUser(this.userLogin)
+        .subscribe((user: Users) => {
+          this.users.push(user);
+      };
+      this.userLogin = '';
+    }
 
 }
