@@ -14,7 +14,8 @@ interface Users {
 export class PersonComponent {
 
   users: Users[] = [];
-  userLogin: string = '';
+  userLogin = '';
+  userPassord = '';
   configUrl = 'http://localhost:3000/users';
 
   constructor(private usersService: UsersService) { }
@@ -30,8 +31,16 @@ export class PersonComponent {
       this.usersService.addUser(this.userLogin)
         .subscribe((user: Users) => {
           this.users.push(user);
-      };
+      });
       this.userLogin = '';
     }
 
+    getMyBlog() {
+      this.usersService.getMyBlog(this.userLogin, this.userPassord)
+        .subscribe((data: Users) => {
+          /*this.users.push(user);*/
+          console.log(data);
+        });
+      this.userPassord = '';
+    }
 }
