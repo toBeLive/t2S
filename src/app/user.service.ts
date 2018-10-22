@@ -30,4 +30,30 @@ export class UsersService {
     return this.http.get('http://vps1.t2studio.org:8000/authserver/people', {headers: myHeaders});
   }
 
+  /* добавить клиента
+  fetch('http://vps1.t2studio.org:8000/authserver/client', {
+  	method: 'POST',
+	  headers: {
+		  'Content-Type': 'application/json',
+		  'Authorization': 'Bearer ' + 'b206691d-8bae-4120-87e3-2e6e80a7f105'
+	  },
+	  body: JSON.stringify({
+		  lastName:'Denisenko'
+	  })
+  })
+  .then(console.log)
+  */
+
+  /* просмотреть клиента
+  fetch('/authserver/client/7', {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + 'b5e22077-ed97-442c-9817-0916298169c4'
+     }
+   })
+   .then(result => result.json()
+   .then(console.log))
+  */
+
 }

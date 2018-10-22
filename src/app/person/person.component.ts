@@ -29,6 +29,7 @@ export class PersonComponent {
         .subscribe((data) => {
           this.accessToken = data.access_token;
           if (this.accessToken) {
+            console.log(this.accessToken);
             this.visibility = !this.visibility;
           }
         });
