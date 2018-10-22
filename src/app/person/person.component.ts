@@ -4,6 +4,7 @@ import { UsersService } from '../user.service';
 interface Users {
   name: string;
   id: number;
+  username: string;
 }
 
 @Component({
@@ -16,31 +17,28 @@ export class PersonComponent {
   users: Users[] = [];
   userLogin = '';
   userPassord = '';
-  configUrl = 'http://localhost:3000/users';
+  accessToken = '';
+
+  visibility = false;
 
   constructor(private usersService: UsersService) { }
 
-    public loadUsers() {
-        this.usersService.getUsers(this.configUrl)
-            .subscribe((users: Users[]) => {
-              this.users = users;
-            });
-    }
-
-    addUser() {
-      this.usersService.addUser(this.userLogin)
-        .subscribe((user: Users) => {
-          this.users.push(user);
-      });
+    loginUsers() {
+      this.usersService.loginUsers(this.userLogin, this.userPassord)
+        .subscribe((data) => {
+          this.accessToken = data.access_token;
+          if (this.accessToken) {
+            this.visibility = !this.visibility;
+          }
+        });
+      this.userPassord = '';
       this.userLogin = '';
     }
 
-    getMyBlog() {
-      this.usersService.getMyBlog(this.userLogin, this.userPassord)
-        .subscribe((data: Users) => {
-          /*this.users.push(user);*/
-          console.log(data);
+    public getUsersList() {
+      this.usersService.usersList(this.accessToken)
+        .subscribe((users: Users[]) => {
+          this.users = users;
         });
-      this.userPassord = '';
     }
 }

@@ -1,4 +1,4 @@
-<form>
+<form [ngClass]="{invisible: visibility}">
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" [(ngModel)]="userLogin" [ngModelOptions]="{standalone: true}">
@@ -8,14 +8,26 @@
     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" [(ngModel)]="userPassord" [ngModelOptions]="{standalone: true}">
   </div>
   <div class="d-flex justify-content-between">
-    <button class="btn btn-primary" (click)="loadUsers()">Вход</button>
-    <button class="btn btn-primary" (click)="addUser()">Добавить</button>
-    <button class="btn btn-primary" (click)="getMyBlog()">Post</button>
+    <button class="btn btn-primary" (click)="loginUsers()">Вход</button>
     <a id="reg_form" href="">Регистрация</a>
   </div>
 </form>
-<ul class="list-group">
-  <li class="list-group-item" *ngFor="let user of users">
-    <span class="badge">{{user.name}}</span> {{user.id}}
-  </li>
-</ul>
+<button [ngClass]="{invisible: !visibility}" class="btn btn-info" (click)="getUsersList()">Получить список пользователей</button>
+<table class="table">
+  <thead class="thead-dark">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Login</th>
+    <th scope="col">Skills</th>
+  </tr>
+  </thead>
+  <tbody *ngFor="let user of users">
+  <tr>
+    <th scope="row">{{user.id}}</th>
+    <td>{{user.name}}</td>
+    <td>{{user.username}}</td>
+    <td>@mdo</td>
+  </tr>
+  </tbody>
+</table>
