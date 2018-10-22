@@ -20,6 +20,7 @@ export class PersonComponent {
   accessToken = '';
 
   visibility = false;
+  tableUser  = true;
 
   constructor(private usersService: UsersService) { }
 
@@ -39,6 +40,7 @@ export class PersonComponent {
       this.usersService.usersList(this.accessToken)
         .subscribe((users: Users[]) => {
           this.users = users;
+          this.tableUser = !this.tableUser;
         });
     }
 }

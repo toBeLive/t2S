@@ -13,7 +13,7 @@
   </div>
 </form>
 <button [ngClass]="{invisible: !visibility}" class="btn btn-info" (click)="getUsersList()">Получить список пользователей</button>
-<table class="table">
+<table [ngClass]="{invisible: tableUser}" class="table">
   <thead class="thead-dark">
   <tr>
     <th scope="col">#</th>
