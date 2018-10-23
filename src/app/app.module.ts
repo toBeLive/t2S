@@ -10,7 +10,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { UsersService } from './user.service';
 import { AppRoutingModules } from './app-routing.modules';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbdCarouselNavigation } from "./carousel-navigation";
 
 
 @NgModule({
@@ -18,14 +19,16 @@ import { AppRoutingModules } from './app-routing.modules';
     AppComponent,
     MainWinComponent,
     PersonComponent,
-    UserPlanComponent
+    UserPlanComponent,
+    NgbdCarouselNavigation
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    AppRoutingModules
+    AppRoutingModules,
+    NgbModule
   ],
   providers: [UsersService],
   bootstrap: [AppComponent]
