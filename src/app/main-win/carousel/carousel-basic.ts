@@ -7,7 +7,8 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 
 export class NgbdCarouselBasic {
-  images = [1, 2, 3, 4, 5].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
+
+  images = [1, 2, 3, 4, 5].map(() => `http://t2studio.org/wp-content/uploads/2018/11/pc_${Math.floor(Math.random() * (5 + 1))}.jpg`);
 
   constructor(config: NgbCarouselConfig) {
     // customize default values of carousels used by this component tree
@@ -17,4 +18,4 @@ export class NgbdCarouselBasic {
     config.pauseOnHover = true;
   }
 }
-}
+

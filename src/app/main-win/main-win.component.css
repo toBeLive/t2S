@@ -28,12 +28,6 @@ p {
     justify-content: space-around;
 }
 
-
-/*для визуализации*/
-.test-div * {
-    border: 1px dashed #87CEEB;
-}
-
 /*стилизация формы*/
 .d-form {
     min-width: 250px;
