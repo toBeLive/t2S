@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { UsersService } from './user.service';
 import { AppRoutingModules } from './app-routing.modules';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NgbdCarouselBasic } from './main-win/carousel/carousel-basic';
+import { CarouselBasicComponent } from './main-win/carousel/carousel-basic.component';
 
 
 @NgModule({
@@ -20,7 +20,7 @@ import { NgbdCarouselBasic } from './main-win/carousel/carousel-basic';
     MainWinComponent,
     PersonComponent,
     UserPlanComponent,
-    NgbdCarouselBasic
+    CarouselBasicComponent
   ],
   imports: [
     BrowserModule,

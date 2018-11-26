@@ -19,8 +19,10 @@ export class PersonComponent {
   userPassord = '';
   accessToken = '';
 
-  visibility = false;
-  tableUser  = true;
+  flVisibleReg = false;
+  flVisibleUserListButton = true;
+  flVisibleUserListTable  = true;
+  flActualToken = false;
 
   constructor(private usersService: UsersService) { }
 
@@ -30,7 +32,8 @@ export class PersonComponent {
           this.accessToken = data.access_token;
           if (this.accessToken) {
             console.log(this.accessToken);
-            this.visibility = !this.visibility;
+            this.flVisibleUserListButton = false;
+            this.flVisibleReg = true;
           }
         });
       this.userPassord = '';
@@ -41,7 +44,7 @@ export class PersonComponent {
       this.usersService.usersList(this.accessToken)
         .subscribe((users: Users[]) => {
           this.users = users;
-          this.tableUser = !this.tableUser;
+          this.flVisibleUserListTable = false;
         });
     }
 }

@@ -1,4 +1,4 @@
-<form [ngClass]="{invisible: visibility}">
+<form [ngClass]="{invisible: flVisibleReg}">
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" [(ngModel)]="userLogin" [ngModelOptions]="{standalone: true}">
@@ -12,8 +12,8 @@
     <a id="reg_form" href="">Регистрация</a>
   </div>
 </form>
-<button [ngClass]="{invisible: !visibility}" class="btn btn-info" (click)="getUsersList()">Получить список пользователей</button>
-<table [ngClass]="{invisible: tableUser}" class="table">
+<button [ngClass]="{invisible: flVisibleUserListButton}" class="btn btn-info" (click)="getUsersList()">Получить список пользователей</button>
+<table [ngClass]="{invisible: flVisibleUserListTable}" class="table">
   <thead class="thead-dark">
   <tr>
     <th scope="col">#</th>

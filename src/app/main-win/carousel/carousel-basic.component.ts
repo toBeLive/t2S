@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'ngbd-carousel-basic',
-  templateUrl: './carousel-basic.html'
+  selector: 'app-carousel-basic',
+  templateUrl: './carousel-basic.component.html'
 })
 
-export class NgbdCarouselBasic {
+export class CarouselBasicComponent {
   images = [1, 2, 3, 4, 5].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
 
   constructor(config: NgbCarouselConfig) {
@@ -16,5 +16,4 @@ export class NgbdCarouselBasic {
     config.keyboard = false;
     config.pauseOnHover = true;
   }
-}
 }
