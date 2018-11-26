@@ -1,0 +1,46 @@
+<!-- <form [ngClass]="{invisible: visibility}">
+  <div class="form-group">
+    <label for="usName">Имя пользователя</label>
+    <input type="text" class="form-control" id="usName" aria-describedby="emailHelp" placeholder="Enter your name" [(ngModel)]="usName">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Возраст</label>
+    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter your age" [(ngModel)]="usAge">
+  </div>
+  <div class="d-flex justify-content-between">
+    <button class="btn btn-primary" (click)="regUsers()">Регистрация</button>
+  </div>
+</form>
+-->
+<!--
+  <label for="age">имя</label>
+  <input type="text" id="name" formControlName="age" />
+  <div class="error" *ngIf="isControlInvalid('age')">
+    Возраст должен состоять только из целых чисел
+  </div>
+  <br/><br/>
+  -->
+<h1>РЕГИСТРАЦИЯ</h1>
+<div class="form-group">
+<form [formGroup]="userReactiveForm" (submit)="onSubmit()">
+  <label for="usName">Имя пользователя</label>
+  <input type="text" class="form-control" id="usName" placeholder="Enter your name"  formControlName="name" />
+  <div class="error" *ngIf="isControlInvalid('name')">
+    Имя должно состоять только из русских букв
+  </div>
+  <label for="usEmail">Электронный адресс</label>
+  <input type="text" class="form-control" id="usEmail" placeholder="Enter your e-Mail" formControlName="email" />
+  <div class="error" *ngIf="isControlInvalid('email')">
+    Введите валидный адрес почты
+  </div>
+  <div class="d-flex justify-content-between">
+    <button type="submit" class="btn btn-primary" (click)="regUsers()">Регистрация</button>
+  </div>
+</form>
+
+<hr/><br/>
+
+<div>
+  {{userReactiveForm.value | json}}
+</div>
+</div>

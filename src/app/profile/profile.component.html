@@ -1,4 +1,4 @@
-<form [ngClass]="{invisible: flVisibleReg}">
+<form [ngClass]="{invisible: visibil}">
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" [(ngModel)]="userLogin" [ngModelOptions]="{standalone: true}">
@@ -9,11 +9,12 @@
   </div>
   <div class="d-flex justify-content-between">
     <button class="btn btn-primary" (click)="loginUsers()">Вход</button>
-    <a id="reg_form" href="">Регистрация</a>
+    <a id="reg_form" class="nav-link" routerLinkActive="active"  routerLink="/reg-profile" href="">Регистрация</a>
   </div>
 </form>
-<button [ngClass]="{invisible: flVisibleUserListButton}" class="btn btn-info" (click)="getUsersList()">Получить список пользователей</button>
-<table [ngClass]="{invisible: flVisibleUserListTable}" class="table">
+<!--
+<button [ngClass]="{invisible: !visibility}" class="btn btn-info" (click)="getUsersList()">Получить список пользователей</button>
+<table [ngClass]="{invisible: tableUser}" class="table">
   <thead class="thead-dark">
   <tr>
     <th scope="col">#</th>
@@ -31,3 +32,4 @@
   </tr>
   </tbody>
 </table>
+-->
