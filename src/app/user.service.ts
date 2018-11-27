@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -31,7 +31,8 @@ export class UsersService {
   }
 
   /* добавить клиента
-  fetch('http://vps1.t2studio.org:8000/authserver/client', {
+  // http://vps1.t2studio.org:8000/authserver/swagger-ui.html#/person-controller/addPersonUsingPOST
+  fetch('http://vps1.t2studio.org:8000/authserver/v1/people', {
   	method: 'POST',
 	  headers: {
 		  'Content-Type': 'application/json',

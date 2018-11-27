@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 
-Injectable()
-
+@Injectable({
+  providedIn: 'root',
+})
 export class GlobalsVariable {
-  public globalVisibility: boolean;
+  public globalInvisible: boolean;
   public globalTableUser: boolean;
-
-
+  public globalAccessToken: string = '';
 }

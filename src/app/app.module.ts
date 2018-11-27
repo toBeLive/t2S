@@ -10,12 +10,12 @@ import { UserPlanComponent } from './user-plan/user-plan.component';
 import { RegProfileComponent} from './reg-profile/reg-profile.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UsersService } from './user.service';
 import { AppRoutingModules } from './app-routing.modules';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { NgbdCarouselBasic } from './main-win/carousel/carousel-basic';
+import { NgbdCarouselBasic } from './main-win/carousel/carousel-basic.component';
 
 
 @NgModule({

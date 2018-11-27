@@ -3,7 +3,7 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'ngbd-carousel-basic',
-  templateUrl: './carousel-basic.html'
+  templateUrl: './carousel-basic.component.html'
 })
 
 export class NgbdCarouselBasic {

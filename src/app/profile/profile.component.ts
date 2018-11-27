@@ -19,36 +19,30 @@ export class ProfileComponent {
   users: Users[] = [];
   userLogin;
   userPassord;
-  visibil: boolean;
 
-  constructor(private usersService: UsersService) { }
+  constructor(private usersService: UsersService, public globalVar: GlobalsVariable) { }
 
-  public loginUsers() {
-    if (!window.globalAccessToken == '') {
-      /*SharedService.updateVisibility();*/
-      window.visibility = true;
-      visibil = window.visibility;
+  loginUsers() {
+    if (this.globalVar.globalAccessToken.length > 0) {
+      this.globalVar.globalInvisible = true;
+      console.log('if true!');
     } else {
       this.usersService.loginUsers(this.userLogin, this.userPassord)
         .subscribe((data) => {
-          window.globalAccessToken = data.access_token;
-          if (window.globalAccessToken) {
-            console.log(window.globalAccessToken);
-            /*SharedService.updateVisibility();*/
-            window.visibility = true;
-            visibil = window.visibility;
+          this.globalVar.globalAccessToken = data.access_token;
+          if (this.globalVar.globalAccessToken) {
+            console.log(this.globalVar.globalAccessToken);
+            this.globalVar.globalInvisible = true;
           }
         });
-      //this.userPassord = '';
-      //this.userLogin = '';
     }
   }
 
-  public getUsersList() {
-    this.usersService.usersList(window.globalAccessToken)
+  getUsersList() {
+    this.usersService.usersList(this.globalVar.globalAccessToken)
       .subscribe((users: Users[]) => {
         this.users = users;
-        window.TableUser = !window.TableUser;
+        this.globalVar.globalTableUser = !this.globalVar.globalTableUser;
       });
   }
 }

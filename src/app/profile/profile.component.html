@@ -1,4 +1,7 @@
-<form [ngClass]="{invisible: visibil}">
+<p>Invisible = {{globalVar.globalInvisible}}</p>
+<p>Token = {{globalVar.globalAccessToken}}</p>
+
+<form [ngClass]="{invisible: globalVar.globalInvisible}">
   <div class="form-group">
     <label for="exampleInputEmail1">Email address</label>
     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" [(ngModel)]="userLogin" [ngModelOptions]="{standalone: true}">

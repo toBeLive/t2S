@@ -7,7 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   users = [];
-  window.globalVisibility: boolean;
-  window.globalTableUser: boolean;
-  window.globalAccessToken: string;
 }
