@@ -8,21 +8,22 @@ interface Users {
   username: string;
 }
 
-interface Clients {
-  creationDate: string;
-  customerType: [
-    flDeletedType: boolean;
-    description: string;
-    id: number;
-    name: string;
-    ];
-  flDeleted: boolean;
+/*interface Clients {
+  creationDate: Date;
+  deleted: boolean;
   firstName: string;
   id: number;
   info: string;
   patronymicName: string;
   secondName: string;
 }
+
+interface customerType {
+  deleted: boolean;
+  description: string;
+  id: number;
+  name: string;
+}*/
 
 @Component({
   selector: 'app-person',
@@ -33,11 +34,29 @@ interface Clients {
 export class ProfileComponent {
 
   users: Users[] = [];
-  clients: Clients[] = [];
+  customers;
+  clients;
   userLogin;
   userPassord;
+  clientID;
 
-  testBody = JSON.stringify({lastName: 'Den1'});
+  testBodyCustomers = JSON.stringify({
+    'creationDate': '2018-11-28T18:06:30.863Z',
+    'customerType': {
+      'deleted': false,
+      'description': 'customerType description M1',
+      'id': 0,
+      'name': 'customerType name M1'
+    },
+    'deleted': false,
+    'firstName': 'Maks1',
+    'id': 3,
+    'info': 'info M1',
+    'patronymicName': 'patronymicName M1',
+    'secondName': 'secondName M1'
+  });
+
+  testBodyClients = JSON.stringify({lastName:'Max-'});
 
   constructor(private usersService: UsersService, public globalVar: GlobalsVariable) { }
 
@@ -90,10 +109,38 @@ export class ProfileComponent {
       });
   }
 
-  getClientsList() {
+  getCustomersList() {
     this.usersService.getInBD(this.globalVar.globalAccessToken, '/customers')
-      .subscribe((clients: Clients[]) => {
-        this.clients = clients;
+      .subscribe((data) => {
+        this.customers = data;
+        this.globalVar.globalTableCustomers = true;
+        console.log(this.customers);
+      });
+  }
+
+  postCustomersList() {
+    this.usersService.postInBD(this.globalVar.globalAccessToken, '/customers', this.testBodyCustomers)
+      .subscribe((data) => {
+        this.customers = data;
+        this.globalVar.globalTableCustomers = true;
+        console.log(this.customers);
+      });
+  }
+
+  getClientsList() {
+    this.usersService.getInBD(this.globalVar.globalAccessToken, '/clients/' + this.clientID)
+      .subscribe((data) => {
+        this.clients = data;
+        this.globalVar.globalTableClient = true;
+        console.log(this.clients);
+      });
+  }
+
+  postClientsList() {
+    this.usersService.postInBD(this.globalVar.globalAccessToken, '/clients', this.testBodyClients)
+      .subscribe((data) => {
+        this.clients = data;
+        this.globalVar.globalTableClient = true;
         console.log(this.clients);
       });
   }

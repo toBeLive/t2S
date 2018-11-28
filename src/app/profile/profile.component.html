@@ -41,6 +41,47 @@
   </div>
   <!-- список клиентов системы -->
   <div>
-    <button class="btn btn-info" (click)="getClientsList()">Получить список клиентов</button>
+    <button class="btn btn-info" (click)="getCustomersList()">Получить список Customers</button>
+    <table [ngClass]="{invisible: !globalVar.globalTableCustomers}" class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Info</th>
+        <th scope="col">Description</th>
+        <th scope="col">Creation Date</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let customer of customers">
+      <tr>
+        <th scope="row">{{customer.id}}</th>
+        <td>{{customer.name}}</td>
+        <td>{{customer.info}}</td>
+        <td>{{customer.customerType.description}}</td>
+        <td>{{customer.creationDate}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <button class="btn btn-info" (click)="getClientsList()">Получить Clients по ID</button>
+    <p>
+      Введите ID Client
+      <input type="text" class="" id="" placeholder="ID Client" [(ngModel)]="clientID">
+    </p>
+    <table [ngClass]="{invisible: !globalVar.globalTableClient}" class="table">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <th scope="row">{{clients.id}}</th>
+        <td>{{clients.lastName}}</td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </div>
