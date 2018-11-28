@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { GlobalsVariable } from '../globals';
 
 @Component({
   selector: 'app-main-win',
   templateUrl: './main-win.component.html',
   styleUrls: ['./main-win.component.css']
 })
-export class MainWinComponent implements OnInit {
 
-  constructor() { }
+export class MainWinComponent {
 
-  ngOnInit() {
+  constructor(public globalVar: GlobalsVariable) {
   }
 
 }

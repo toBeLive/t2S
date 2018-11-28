@@ -4,8 +4,8 @@
 
 :root {
     --big-size: 900px;
-    --bg-color-menu: #4682B4;
-    --bg-color: #DCDCDC;
+    --bg-color-menu: #ddf9fc; /*#4682B4*/
+    --bg-color: #f9f9f9; /*#DCDCDC*/
 }
 
 body {

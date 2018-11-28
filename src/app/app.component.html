@@ -1,8 +1,8 @@
 <div class="navbar">
     <nav style="margin-bottom: 20px;" class="nav nav-pills flex-column flex-sm-row">
         <a class="nav-link" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" routerLink="/">Главная</a>
-        <a class="nav-link" routerLinkActive="active"  routerLink="/plan">Рабочий кабинет</a>
-        <a class="nav-link" routerLinkActive="active"  routerLink="/profile">Профиль</a>
+        <a [ngClass]="{invisible: !globalVar.globalInvisible}" class="nav-link" routerLinkActive="active"  routerLink="/plan">Рабочий кабинет</a>
+        <a class="nav-link" routerLinkActive="active"  routerLink="/profile">{{globalVar.globalProfilName}}</a>
     </nav>
 </div>
 <div class="container">
