@@ -8,6 +8,134 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style type="text/css">
+    /* You can add global styles to this file, and also import other style files */
+    @import url('src/css/reset.css');
+    @import url('node_modules/bootstrap/dist/css/bootstrap.min.css');
+
+    :root {
+      --big-size: 900px;
+      --bg-color-menu: #4682B4; /*#4682B4*/ /*#ddf9fc*/
+      --bg-color: #DCDCDC; /*#DCDCDC*/ /*#f9f9f9*/
+    }
+
+    body {
+      min-width: var(--big-size);
+      background-color: var(--bg-color);
+      height: 100% !important;
+    }
+
+    #top__head {
+      background-color: var(--bg-color-menu);
+    }
+
+    #logo > img {
+      position: absolute;
+      max-height: 80px;
+      max-width: 290px;
+      padding: 10px 0 0 15px;
+      /*padding: 15px 0 0 15px; для оригинального лабла*/
+    }
+
+    #top__head {
+      display: flex;
+      justify-content: space-between;
+      min-height: 80px;
+    }
+
+    #language {
+      display: flex;
+      /*width: 130px;*/
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #flag {
+      background-image: url("http://t2studio.org/wp-content/uploads/2018/09/europa-vector-flag_small.png");
+      width: 30px;
+      height: 31px;
+      background-position: -165px -164px;
+      margin-right: 5px;
+    }
+
+    .transition-loader {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    .transition-loader-inner {
+      transform: translateY(-50%);
+      top: 50%;
+      position: absolute;
+      width: calc(100% - 200px);
+      color: #FFF;
+      padding: 0 100px;
+      text-align: center;
+    }
+
+    .transition-loader-inner > label {
+      font-size: 1em;
+      padding: 1%;
+      opacity: 0;
+      display: inline-block;
+    }
+
+    .transition-loader-inner > label:after {
+      font-family: FontAwesome;
+      content: '\f111';
+    }
+
+    $key-frames-ms: 600ms, 500ms, 400ms, 300ms, 200ms, 100ms;
+
+    @each $current-ms in $key-frames-ms {
+    $i: index($key-frames-ms, $current-ms);
+      .transition-loader-inner label:nth-child(#{$i}) {
+        -webkit-animation: loader 3s $current-ms infinite ease-in-out;
+        animation: loader 3s $current-ms infinite ease-in-out;
+      }
+    }
+
+    @keyframes loader {
+      0% {
+        opacity: 0;
+        transform: translateX(-300px) scale(1);
+      }
+      33% {
+        opacity: 1;
+        transform: translateX(0px) scale(2);
+      }
+      66% {
+        opacity: 1;
+        transform: translateX(0px) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateX(300px) scale(2);
+      }
+    }
+
+    @-webkit-keyframes loader {
+      0% {
+        opacity: 0;
+        -webkit-transform: translateX(-300px);
+      }
+      33% {
+        opacity: 1;
+        -webkit-transform: translateX(0px);
+      }
+      66% {
+        opacity: 1;
+        -webkit-transform: translateX(0px);
+      }
+      100% {
+        opacity: 0;
+        -webkit-transform: translateX(300px);
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -26,7 +154,8 @@
        <label>
    </div>
  </header>
-   <app-root></app-root>
+   <app-root>
+   </app-root>
    <footer class="mt-5">
      <ul id="site_link" class="navbar navbar-dark bg-dark justify-content-around">
        <li class="mb-0"><a href="">Ссылка на раздел сайта</a></li>
