@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { GlobalsVariable } from '../globals';
+import { UsersService } from '../user.service';
+import {log} from 'util';
 
 @Component({
   selector: 'app-reg-profile',
@@ -10,39 +11,44 @@ import { GlobalsVariable } from '../globals';
 
 export class RegProfileComponent {
 
-  userReactiveForm: FormGroup;
+newPassword: string;
+  newLogin: string;
+  testLogin: string;
+  testPassword: string;
+  private stringBody: string;
+  private config: { heroesUrl: string; textfile: string };
+  responseStatus: number;
 
-  constructor(private userRegiter: FormBuilder, public globalVar: GlobalsVariable) {}
+  constructor(private usersService: UsersService, public globalVar: GlobalsVariable) {
+  }
 
-  onSubmit() {
-    const controls = this.userReactiveForm.controls;
+  regUser() {
+    this.testLogin = this.newLogin;
+    this.testPassword = this.newPassword;
+    console.log('newLogin = ' + this.newLogin);
+    console.log('newPassword = ' + this.newPassword);
 
-    if (this.userReactiveForm.invalid) {
-      Object.keys(controls)
-        .forEach(controlName => controls[controlName].markAsTouched());
-      return;
+    this.usersService.regNewUser(this.newLogin, this.newPassword)
+      .subscribe(data => {
+        this.responseStatus = data.status;
+        console.log(data.status); // 200
+        console.log(data); // undefined
+        console.log(data.statusText); // OK
+        this.snackBar();
+      },
+      err => {
+        console.log(err.status); // 401
+        console.log(err.error.error); // unauthorized
+        this.responseStatus = err.status;
+        this.snackBar();
+      });
+  }
+
+  snackBar () {
+    if (this.responseStatus === 200) {
+      console.log('Все супер');
+    } else {
+      console.log('Все плохо');
     }
-
-    /** TODO: Обработка данных формы */
-    console.log(this.userReactiveForm.value);
-    console.log(this.userReactiveForm);
-  }
-
-  regUsers() {
-    console.log('the console');
-  }
-
-  isControlInvalid(controlName: string): boolean {
-    const control = this.userReactiveForm.controls[controlName];
-    const result = control.invalid && control.touched;
-    return result;
-  }
-
-  private initForm() {
-    this.userReactiveForm = this.userRegiter.group({
-      name: ['', [Validators.required,Validators.pattern(/[А-я]/)]],
-      age: ['',[Validators.required,Validators.pattern(/[0-1]/)]],
-      email: ['',[Validators.required, Validators.email]]
-    });
   }
 }

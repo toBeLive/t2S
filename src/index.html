@@ -88,16 +88,6 @@
       content: '\f111';
     }
 
-    $key-frames-ms: 600ms, 500ms, 400ms, 300ms, 200ms, 100ms;
-
-    @each $current-ms in $key-frames-ms {
-    $i: index($key-frames-ms, $current-ms);
-      .transition-loader-inner label:nth-child(#{$i}) {
-        -webkit-animation: loader 3s $current-ms infinite ease-in-out;
-        animation: loader 3s $current-ms infinite ease-in-out;
-      }
-    }
-
     @keyframes loader {
       0% {
         opacity: 0;

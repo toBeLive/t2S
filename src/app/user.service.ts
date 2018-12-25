@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -9,6 +9,7 @@ export class UsersService {
 
     urlStart = 'http://vps1.t2studio.org:8000/authserver/v1';
     urlToken = this.urlStart.substring(0, this.urlStart.length - 3);
+    private sendBody;
     /*
     public getUsers(url: string): Observable <any> {
       return this.http.get(url);
@@ -50,5 +51,15 @@ export class UsersService {
         'Content-Type': 'application/json'
       });
       return this.http.post(this.urlStart + urlLink, postBody, {headers: myHeaders});
+    }
+
+    // регистрация нового польователя
+    public regNewUser(newLogin, newPassword): Observable<any> {
+      const myHeaders = new HttpHeaders({
+        'Content-Type': 'application/json'
+      });
+      this.sendBody = JSON.stringify({ username: newLogin, password: newPassword});
+      console.log('sendBody = ' + this.sendBody);
+      return this.http.post(this.urlStart + '/users', this.sendBody, {headers: myHeaders, observe: 'response'});
     }
 }

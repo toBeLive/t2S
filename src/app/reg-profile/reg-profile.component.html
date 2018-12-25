@@ -22,25 +22,17 @@
   -->
 <h1>РЕГИСТРАЦИЯ</h1>
 <div class="form-group">
-<form [formGroup]="userReactiveForm" (submit)="onSubmit()">
-  <label for="usName">Имя пользователя</label>
-  <input type="text" class="form-control" id="usName" placeholder="Enter your name"  formControlName="name" />
-  <div class="error" *ngIf="isControlInvalid('name')">
-    Имя должно состоять только из русских букв
-  </div>
-  <label for="usEmail">Электронный адресс</label>
-  <input type="text" class="form-control" id="usEmail" placeholder="Enter your e-Mail" formControlName="email" />
-  <div class="error" *ngIf="isControlInvalid('email')">
-    Введите валидный адрес почты
-  </div>
+<form>
+  <label for="userEmail">Введите ваш почтовый ящик</label>
+  <input type="email" class="form-control" id="userEmail" placeholder="Enter your e-Mail" [(ngModel)]="newLogin" name="newLogin" required />
+  <label for="userPassword">Введите пароль</label>
+  <input type="password" class="form-control" id="userPassword" placeholder="Enter your password" [(ngModel)]="newPassword" name="newPassword" required />
   <div class="d-flex justify-content-between">
-    <button class="btn btn-primary" (click)="regUsers()">Регистрация</button>
+    <button class="btn btn-primary" (click)="regUser()">Регистрация</button>
   </div>
 </form>
 
 <hr/><br/>
-
-<div>
-  {{userReactiveForm.value | json}}
-</div>
+  {{testLogin}}
+  {{testPassword}}
 </div>
