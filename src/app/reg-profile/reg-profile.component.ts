@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { GlobalsVariable } from '../globals';
 import { UsersService } from '../user.service';
 
-import { SnackBarComponent} from '../snack-bar/snack-bar';
+//import { SnackBarComponent} from '../snack-bar/snack-bar';
 
 @Component({
   selector: 'app-reg-profile',
@@ -13,8 +13,7 @@ import { SnackBarComponent} from '../snack-bar/snack-bar';
 export class RegProfileComponent {
 
   constructor(private usersService: UsersService,
-              public globalVar: GlobalsVariable,
-              public snackBar: SnackBarComponent) {
+              public globalVar: GlobalsVariable) {
   }
 
 newPassword: string;
@@ -50,10 +49,8 @@ newPassword: string;
   showSnackBar () {
     if (this.responseStatus !== 200) {
       console.log('Все плохо');
-      this.snackBar.openSnackBar();
     } else {
       console.log('Все супер');
-      this.snackBar.openSnackBar();
     }
   }
 }

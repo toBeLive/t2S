@@ -40,23 +40,8 @@ export class ProfileComponent {
   userPassord;
   clientID;
 
-  testBodyCustomers = JSON.stringify({
-    'creationDate': '2018-11-28T18:06:30.863Z',
-    'customerType': {
-      'deleted': false,
-      'description': 'customerType description M1',
-      'id': 0,
-      'name': 'customerType name M1'
-    },
-    'deleted': false,
-    'firstName': 'Maks1',
-    'id': 3,
-    'info': 'info M1',
-    'patronymicName': 'patronymicName M1',
-    'secondName': 'secondName M1'
-  });
-
-  testBodyClients = JSON.stringify({lastName:'Max-'});
+  testBodyCustomers = JSON.stringify({ });
+  testBodyClients   = JSON.stringify({lastName:'Max-'});
 
   constructor(private usersService: UsersService, public globalVar: GlobalsVariable) { }
 
