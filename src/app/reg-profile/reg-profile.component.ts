@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { GlobalsVariable } from '../globals';
 import { UsersService } from '../user.service';
-import {log} from 'util';
+
+import { SnackBarComponent} from '../snack-bar/snack-bar';
 
 @Component({
   selector: 'app-reg-profile',
@@ -11,6 +12,11 @@ import {log} from 'util';
 
 export class RegProfileComponent {
 
+  constructor(private usersService: UsersService,
+              public globalVar: GlobalsVariable,
+              public snackBar: SnackBarComponent) {
+  }
+
 newPassword: string;
   newLogin: string;
   testLogin: string;
@@ -18,9 +24,6 @@ newPassword: string;
   private stringBody: string;
   private config: { heroesUrl: string; textfile: string };
   responseStatus: number;
-
-  constructor(private usersService: UsersService, public globalVar: GlobalsVariable) {
-  }
 
   regUser() {
     this.testLogin = this.newLogin;
@@ -34,21 +37,24 @@ newPassword: string;
         console.log(data.status); // 200
         console.log(data); // undefined
         console.log(data.statusText); // OK
-        this.snackBar();
+        this.showSnackBar();
       },
       err => {
         console.log(err.status); // 401
         console.log(err.error.error); // unauthorized
         this.responseStatus = err.status;
-        this.snackBar();
+        this.showSnackBar();
       });
   }
 
-  snackBar () {
-    if (this.responseStatus === 200) {
-      console.log('Все супер');
-    } else {
+  showSnackBar () {
+    if (this.responseStatus !== 200) {
       console.log('Все плохо');
+      this.snackBar.openSnackBar();
+    } else {
+      console.log('Все супер');
+      this.snackBar.openSnackBar();
     }
   }
 }
+

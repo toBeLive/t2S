@@ -17,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NgbdCarouselBasic } from './main-win/carousel/carousel-basic.component';
 
+import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,9 @@ import { NgbdCarouselBasic } from './main-win/carousel/carousel-basic.component'
     HttpClientModule,
     FormsModule,
     AppRoutingModules,
-    NgbModule
+    NgbModule,
+    MatButtonModule,
+    MatCheckboxModule
   ],
   providers: [UsersService],
   bootstrap: [AppComponent]

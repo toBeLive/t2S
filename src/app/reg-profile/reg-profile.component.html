@@ -28,10 +28,12 @@
   <label for="userPassword">Введите пароль</label>
   <input type="password" class="form-control" id="userPassword" placeholder="Enter your password" [(ngModel)]="newPassword" name="newPassword" required />
   <div class="d-flex justify-content-between">
-    <button class="btn btn-primary" (click)="regUser()">Регистрация</button>
+    <button class="btn btn-primary" (click)="regUser()" aria-label="Show an example snack-bar">Регистрация</button>
   </div>
 </form>
-
+  <div class="mat-app-background basic-container">
+    <snack-bar>loading</snack-bar>
+  </div>
 <hr/><br/>
   {{testLogin}}
   {{testPassword}}
