@@ -69,6 +69,7 @@ export class ProfileComponent {
       this.usersService.loginUsers(this.userLogin, this.userPassord)
         .subscribe((data) => {
           this.globalVar.globalAccessToken = data.access_token;
+          sessionStorage.setItem('AccessToken', data.access_token);
           if (this.globalVar.globalAccessToken) {
             console.log(this.globalVar.globalAccessToken);
             this.globalVar.globalInvisible = true;
