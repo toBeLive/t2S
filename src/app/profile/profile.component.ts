@@ -70,6 +70,8 @@ export class ProfileComponent {
         .subscribe((data) => {
           this.globalVar.globalAccessToken = data.access_token;
           sessionStorage.setItem('AccessToken', data.access_token);
+          sessionStorage.setItem('refreshToken', data.refresh_token);
+          sessionStorage.setItem('userName', data.username);
           if (this.globalVar.globalAccessToken) {
             console.log(this.globalVar.globalAccessToken);
             this.globalVar.globalInvisible = true;
