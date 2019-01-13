@@ -17,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NgbdCarouselBasic } from './main-win/carousel/carousel-basic.component';
 
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { NgbdCarouselBasic } from './main-win/carousel/carousel-basic.component'
     HttpClientModule,
     FormsModule,
     AppRoutingModules,
-    NgbModule
+    NgbModule,
+    AgGridModule.withComponents(null)
   ],
   providers: [UsersService],
   bootstrap: [AppComponent]
