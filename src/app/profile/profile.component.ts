@@ -8,22 +8,18 @@ interface Users {
   username: string;
 }
 
-/*interface Clients {
-  creationDate: Date;
-  deleted: boolean;
-  firstName: string;
+interface Clients {
+  name: string;
   id: number;
-  info: string;
-  patronymicName: string;
-  secondName: string;
+  lastName: string;
 }
 
-interface customerType {
-  deleted: boolean;
-  description: string;
-  id: number;
+interface Customers {
   name: string;
-}*/
+  info: string;
+  description: string;
+  creationDate: string;
+}
 
 @Component({
   selector: 'app-person',
@@ -34,15 +30,55 @@ interface customerType {
 export class ProfileComponent {
 
   users: Users[] = [];
-  customers;
-  clients;
+  customers: Customers[] = [];
+  clients: Clients[] = [];
   userLogin;
   userPassord;
   clientID;
 
-  testBodyCustomers = JSON.stringify({ });
-  testBodyClients   = JSON.stringify({lastName:'Max-'});
+  testBodyCustomers = JSON.stringify({
+    'creationDate': '2018-11-28T18:06:30.863Z',
+    'customerType': {
+      'deleted': false,
+      'description': 'customerType description M1',
+      'id': 0,
+      'name': 'customerType name M1'
+    },
+    'deleted': false,
+    'firstName': 'Maks1',
+    'id': 3,
+    'info': 'info M1',
+    'patronymicName': 'patronymicName M1',
+    'secondName': 'secondName M1'
+  });
 
+  testBodyClients = JSON.stringify({lastName:'Max-'});
+
+  columnDefs = [
+    {headerName: 'Make', field: 'make'},
+    {headerName: 'Model', field: 'model'},
+    {headerName: 'Price', field: 'price'}
+  ];
+
+  /*
+  rowData = [
+    {make: 'Toyota', model: 'Celica', price: 35000},
+    {make: 'Ford', model: 'Mondeo', price: 32000},
+    {make: 'Porsche', model: 'Boxter', price: 72000}
+  ];
+*/
+
+  rowData = [];
+
+  ngOnInit() {
+    fetch('https://api.myjson.com/bins/15psn9')
+      .then(result => result.json())
+      .then(rowData => this.rowData = rowData);
+  }
+
+  /*
+  {"make":"Toyota","model":"Celica","price":35000}
+  */
   constructor(private usersService: UsersService, public globalVar: GlobalsVariable) { }
 
 /*  postBDData(postLink, outBody) {
