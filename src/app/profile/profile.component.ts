@@ -69,6 +69,7 @@ export class ProfileComponent {
 */
 
   rowData = [];
+  private localTest: string | any;
 
   ngOnInit() {
     fetch('https://api.myjson.com/bins/15psn9')
@@ -96,6 +97,15 @@ export class ProfileComponent {
       });
   }*/
 
+  newLocalData (repKey, repData) {
+    try {
+      localStorage.setItem(repKey, repData);
+      return 'OK';
+    } catch (error) {
+      return error;
+    }
+  }
+
   loginUsers() {
     if (this.globalVar.globalAccessToken.length > 0) {
       this.globalVar.globalInvisible = true;
@@ -105,9 +115,14 @@ export class ProfileComponent {
       this.usersService.loginUsers(this.userLogin, this.userPassord)
         .subscribe((data) => {
           this.globalVar.globalAccessToken = data.access_token;
-          sessionStorage.setItem('AccessToken', data.access_token);
-          sessionStorage.setItem('refreshToken', data.refresh_token);
-          sessionStorage.setItem('userName', data.username);
+
+          this.localTest = this.newLocalData('activUser', JSON.stringify(data));
+          console.log(this.localTest);
+          /*
+          sessionStorage.setItem("activUser", JSON.stringify(data)); //запишем его в хранилище по ключу "myKey"
+          returnObj = JSON.parse(localStorage.getItem("myKey")) //спарсим его обратно объект
+           */
+
           if (this.globalVar.globalAccessToken) {
             console.log(this.globalVar.globalAccessToken);
             this.globalVar.globalInvisible = true;
@@ -116,14 +131,6 @@ export class ProfileComponent {
         });
     }
   }
-
-/*  getUsersList() {
-    this.usersService.usersList(this.globalVar.globalAccessToken)
-      .subscribe((users: Users[]) => {
-        this.users = users;
-        this.globalVar.globalTableUser = true;
-      });
-  }*/
 
   getUsersList() {
     this.usersService.getInBD(this.globalVar.globalAccessToken, '/people')
