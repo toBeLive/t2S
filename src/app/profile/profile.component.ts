@@ -1,3 +1,4 @@
+///<reference path="../user.service.ts"/>
 import { Component } from '@angular/core';
 import { UsersService } from '../user.service';
 import { GlobalsVariable } from '../globals';

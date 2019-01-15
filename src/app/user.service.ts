@@ -44,6 +44,15 @@ export class UsersService {
       return this.http.get(this.urlStart + urlLink, {headers: myHeaders});
     }
 
+    // обновление данных
+    public putInBD(userToken, urlLink): Observable<any> {
+      const myHeaders = new HttpHeaders({
+        'Authorization': 'Bearer ' + userToken,
+        'Content-Type': 'application/json'
+      });
+      return this.http.get(this.urlStart + urlLink, {headers: myHeaders});
+    }
+
     // добавление данных
     public postInBD(userToken, urlLink, postBody): Observable<any> {
       const myHeaders = new HttpHeaders({

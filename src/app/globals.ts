@@ -12,4 +12,5 @@ export class GlobalsVariable {
   public globalInputClient: boolean;
   public globalAccessToken = '';
   public globalProfilName = 'Войти';
+  public globalCurrentEmployeeID: string;
 }
