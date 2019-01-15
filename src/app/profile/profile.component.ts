@@ -60,9 +60,21 @@ export class ProfileComponent {
     'secondName': 'secondName M1'
   });
 
+<<<<<<< HEAD
   testBodyClients = JSON.stringify({lastName: 'Max-'});
 
 /*
+=======
+  testBodyClients = JSON.stringify({lastName:'Max-'});
+
+  columnDefs = [
+    {headerName: 'Make', field: 'make'},
+    {headerName: 'Model', field: 'model'},
+    {headerName: 'Price', field: 'price'}
+  ];
+
+  /*
+>>>>>>> master
   rowData = [
     {make: 'Toyota', model: 'Celica', price: 35000},
     {make: 'Ford', model: 'Mondeo', price: 32000},
@@ -70,17 +82,29 @@ export class ProfileComponent {
   ];
 */
 
+<<<<<<< HEAD
   private columnDefs = [
     {headerName: 'Make', field: 'make'},
     {headerName: 'Model', field: 'model'},
     {headerName: 'Price', field: 'price'}
   ];
+=======
+  rowData = [];
+>>>>>>> master
 
   ngOnInit() {
     fetch('https://api.myjson.com/bins/15psn9')
       .then(result => result.json())
       .then(rowData => this.rowData = rowData);
   }
+<<<<<<< HEAD
+=======
+
+  /*
+  {"make":"Toyota","model":"Celica","price":35000}
+  */
+  constructor(private usersService: UsersService, public globalVar: GlobalsVariable) { }
+>>>>>>> master
 
 /*  postBDData(postLink, outBody) {
     this.usersService.postInBD(this.globalVar.globalAccessToken, postLink, outBody)

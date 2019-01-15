@@ -17,7 +17,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { NgbdCarouselBasic } from './main-win/carousel/carousel-basic.component';
 
+<<<<<<< HEAD
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+=======
+>>>>>>> master
 import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
@@ -37,8 +40,11 @@ import { AgGridModule } from 'ag-grid-angular';
     FormsModule,
     AppRoutingModules,
     NgbModule,
+<<<<<<< HEAD
     MatButtonModule,
     MatCheckboxModule,
+=======
+>>>>>>> master
     AgGridModule.withComponents(null)
   ],
   providers: [UsersService],
