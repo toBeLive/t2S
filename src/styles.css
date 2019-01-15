@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('css/reset.css');
 @import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
-@import 'ag-grid/dist/styles/ag-grid.css';
-@import 'ag-grid/dist/styles/ag-theme-balham.css';
+@import '../node_modules/ag-grid/dist/styles/ag-grid.css';
+@import '../node_modules/ag-grid/dist/styles/ag-theme-balham.css';
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 :root {
@@ -50,13 +50,11 @@ body {
   margin-right: 5px;
 }
 
+html, body {
+  height: 100%;
+}
 
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

@@ -8,7 +8,7 @@ import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
 
 export class NgbdCarouselBasic {
 
-  images = [1, 2, 3, 4, 5].map(() => `http://t2studio.org/wp-content/uploads/2018/11/pc_${Math.floor(Math.random() * (5 + 1))}.jpg`);
+  images = [1, 2, 3, 4, 5].map((x) => 'http://t2studio.org/wp-content/uploads/2018/11/pc_' + x + '.jpg');
 
   constructor(config: NgbCarouselConfig) {
     // customize default values of carousels used by this component tree

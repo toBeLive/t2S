@@ -1,11 +1,11 @@
 <form [ngClass]="{invisible: globalVar.globalInvisible}">
   <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter e-Mail" [(ngModel)]="userLogin" [ngModelOptions]="{standalone: true}">
+    <label for="inputEmail">Email address</label>
+    <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter e-Mail" [(ngModel)]="userLogin" [ngModelOptions]="{standalone: true}">
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" [(ngModel)]="userPassord" [ngModelOptions]="{standalone: true}">
+    <label for="inputPassword">Password</label>
+    <input type="password" class="form-control" id="inputPassword" placeholder="Password" [(ngModel)]="userPassord" [ngModelOptions]="{standalone: true}">
   </div>
   <div class="d-flex justify-content-between">
     <button class="btn btn-primary" (click)="loginUsers()">Вход</button>
@@ -16,6 +16,7 @@
   <p>Invisible = {{globalVar.globalInvisible}}</p>
   <p>Token = {{globalVar.globalAccessToken}}</p>
 </div>
+<!-- Angular grid for table -->
 <ag-grid-angular style="width: 500px; height: 500px;" class="ag-theme-balham" [rowData]="rowData" [columnDefs]="columnDefs"></ag-grid-angular>
 <div [ngClass]="{invisible: !globalVar.globalInvisible}">
   <!-- список пользователей системы -->
@@ -59,7 +60,7 @@
         <td>{{customer.name}}</td>
         <td>{{customer.info}}</td>
         <td>{{customer.customerType.description}}</td>
-        <td>{{customer.creationDate}}</td>
+        <td>{{customer.creationDate.year}}.{{customer.creationDate.monthValue}}.{{customer.creationDate.dayOfMonth}}</td>
       </tr>
       </tbody>
     </table>
@@ -68,7 +69,7 @@
     <button class="btn btn-info" (click)="getClientsList()">Получить Clients по ID</button>
     <p>
       Введите ID Client
-      <input type="text" class="" id="" placeholder="ID Client" [(ngModel)]="clientID">
+      <input type="text" value="1" placeholder="ID Client" [(ngModel)]="clientID">
     </p>
     <table [ngClass]="{invisible: !globalVar.globalTableClient}" class="table">
       <thead class="thead-dark">

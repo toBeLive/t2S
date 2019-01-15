@@ -29,12 +29,19 @@ interface Customers {
 
 export class ProfileComponent {
 
+  /*
+  {"make":"Toyota","model":"Celica","price":35000}
+  */
+  constructor(private usersService: UsersService, public globalVar: GlobalsVariable) { }
+
   users: Users[] = [];
   customers: Customers[] = [];
   clients: Clients[] = [];
   userLogin;
   userPassord;
   clientID;
+  rowData = [];
+  private localTest: string | any;
 
   testBodyCustomers = JSON.stringify({
     'creationDate': '2018-11-28T18:06:30.863Z',
@@ -52,15 +59,9 @@ export class ProfileComponent {
     'secondName': 'secondName M1'
   });
 
-  testBodyClients = JSON.stringify({lastName:'Max-'});
+  testBodyClients = JSON.stringify({lastName: 'Max-'});
 
-  columnDefs = [
-    {headerName: 'Make', field: 'make'},
-    {headerName: 'Model', field: 'model'},
-    {headerName: 'Price', field: 'price'}
-  ];
-
-  /*
+/*
   rowData = [
     {make: 'Toyota', model: 'Celica', price: 35000},
     {make: 'Ford', model: 'Mondeo', price: 32000},
@@ -68,19 +69,17 @@ export class ProfileComponent {
   ];
 */
 
-  rowData = [];
-  private localTest: string | any;
+  private columnDefs = [
+    {headerName: 'Make', field: 'make'},
+    {headerName: 'Model', field: 'model'},
+    {headerName: 'Price', field: 'price'}
+  ];
 
   ngOnInit() {
     fetch('https://api.myjson.com/bins/15psn9')
       .then(result => result.json())
       .then(rowData => this.rowData = rowData);
   }
-
-  /*
-  {"make":"Toyota","model":"Celica","price":35000}
-  */
-  constructor(private usersService: UsersService, public globalVar: GlobalsVariable) { }
 
 /*  postBDData(postLink, outBody) {
     this.usersService.postInBD(this.globalVar.globalAccessToken, postLink, outBody)
@@ -90,12 +89,12 @@ export class ProfileComponent {
       });
   }
 
-  getBDData(getLink) {
+getBDData(getLink) {
     return this.usersService.getInBD(this.globalVar.globalAccessToken, getLink)
-      .subscribe((data) => {
-        console.log('getBDData - ' + data);
-      });
-  }*/
+    .subscribe((data) => {
+    console.log('getBDData - ' + data);
+  });
+}*/
 
   newLocalData (repKey, repData) {
     try {
@@ -110,7 +109,7 @@ export class ProfileComponent {
     if (this.globalVar.globalAccessToken.length > 0) {
       this.globalVar.globalInvisible = true;
       this.globalVar.globalProfilName = 'Профиль';
-      console.log('if true!');
+      console.log('ProfilName = Профиль');
     } else {
       this.usersService.loginUsers(this.userLogin, this.userPassord)
         .subscribe((data) => {
